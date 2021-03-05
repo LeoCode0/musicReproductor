@@ -1,3 +1,3 @@
 import React from "react";
 
-export const songContext = React.createContext({});
+export const SongContext = React.createContext({});
