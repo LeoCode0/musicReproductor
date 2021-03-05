@@ -23,6 +23,10 @@ const CarouselItem = ({ cover, song, songName, album }) => {
 };
 
 export const Carousel = () => {
+  const songs = [
+    { cover: "test", song: "test", songName: "test", album: "test", key: "1" },
+  ];
+
   useEffect(() => {
     fetch("https://api.deezer.com/search?q=eminem").then((data) =>
       console.log(data)
