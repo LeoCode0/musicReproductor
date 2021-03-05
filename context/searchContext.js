@@ -1,6 +1,6 @@
 import { useState, createContext } from "react";
 
-const initialState = () => {
+export const initialState = () => {
   const [search, setSearch] = useState([]);
 
   return {
@@ -9,4 +9,4 @@ const initialState = () => {
   };
 };
 
-export const SearchContext = createContext(initialState);
+export const SearchContext = createContext({});

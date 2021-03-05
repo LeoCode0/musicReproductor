@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { FaPlay } from "react-icons/fa";
 
 const CarouselItem = ({ cover, song, songName, album }) => {
@@ -21,7 +22,13 @@ const CarouselItem = ({ cover, song, songName, album }) => {
   );
 };
 
-export const Carousel = (songs) => {
+export const Carousel = () => {
+  useEffect(() => {
+    fetch("https://api.deezer.com/search?q=eminem").then((data) =>
+      console.log(data)
+    );
+  }, []);
+
   return (
     <ul>
       {songs.map((song) => (
