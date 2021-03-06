@@ -4,27 +4,27 @@ export const TopArtist = () => {
   let artists = [
     {
       cover: "https://picsum.photos/400",
-      artist: "Jose Madero",
+      artist: "lorem 2ipsums",
     },
     {
       cover: "https://picsum.photos/400",
-      artist: "Jose Madero",
+      artist: "lorem ipsums",
     },
     {
       cover: "https://picsum.photos/400",
-      artist: "Jose Madero",
+      artist: "lorem 2ipsums",
     },
     {
       cover: "https://picsum.photos/400",
-      artist: "Jose Madero",
+      artist: "lorem 2ipsums",
     },
     {
       cover: "https://picsum.photos/400",
-      artist: "Jose Madero",
+      artist: "lorem 2ipsums",
     },
     {
       cover: "https://picsum.photos/400",
-      artist: "Jose Madero",
+      artist: "lorem 2ipsums",
     },
   ];
   return (

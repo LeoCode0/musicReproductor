@@ -9,6 +9,7 @@ import { SearchBar } from "../components/SearchBar";
 import { Carousel } from "../components/carousel";
 import { initialState } from "../initialState";
 import { useEffect } from "react";
+import { Notification } from "../components/Promotion/";
 
 function home() {
   useEffect(() => {}, []);
@@ -21,6 +22,7 @@ function home() {
       <Carousel />
       <div>
         <TopArtist />
+        <Notification />
       </div>
       <RecentPlayed />
     </SongContext.Provider>
