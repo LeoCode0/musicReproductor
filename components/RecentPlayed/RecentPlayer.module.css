@@ -1,0 +1,82 @@
+.container {
+  display: block;
+  width: 90%;
+  margin: 20px 5%;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 0px 12px -10px black;
+}
+
+.title {
+  font-size: 2rem;
+  padding: 20px 0 20px 10px;
+}
+
+.list {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.list__song {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 5px;
+}
+
+.gray__text {
+  opacity: 0.4;
+  font-weight: 600;
+}
+
+.song__description {
+  display: flex;
+  align-items: center;
+}
+
+.song__number {
+  font-size: 1.8rem;
+}
+
+.song__image {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  margin: 0 10px;
+}
+
+.song__name {
+  font-size: 1.6rem;
+}
+
+.song__author {
+  margin-top: 5px;
+  font-size: 1.4rem;
+}
+
+.song__tools {
+  display: flex;
+  align-items: center;
+}
+
+.song__duration {
+  font-size: 1.6rem;
+}
+
+.song__play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  background: transparent;
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  margin-left: 15px;
+}
+
+.song__play svg {
+  color: orange;
+}

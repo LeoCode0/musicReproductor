@@ -7,6 +7,7 @@ import { SongContext } from "../context/songContext";
 import { Carousel } from "../components/carousel";
 import { initialState } from "../initialState";
 import { useEffect } from "react";
+import { RecentPlayed } from "../components/RecentPlayed/";
 
 function home() {
   useEffect(() => {}, []);
@@ -17,6 +18,7 @@ function home() {
         <Carousel />
       </SearchContext.Provider>
       <Carousel />
+      <RecentPlayed />
     </SongContext.Provider>
   );
 }
