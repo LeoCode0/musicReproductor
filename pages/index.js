@@ -2,12 +2,13 @@ import {
   SearchContext,
   initialState as searchState,
 } from "../context/searchContext";
-import { SearchBar } from "../components/SearchBar";
+import { RecentPlayed } from "../components/RecentPlayed/";
 import { SongContext } from "../context/songContext";
+import { TopArtist } from "../components/TopArtist/";
+import { SearchBar } from "../components/SearchBar";
 import { Carousel } from "../components/carousel";
 import { initialState } from "../initialState";
 import { useEffect } from "react";
-import { RecentPlayed } from "../components/RecentPlayed/";
 
 function home() {
   useEffect(() => {}, []);
@@ -18,6 +19,9 @@ function home() {
         <Carousel />
       </SearchContext.Provider>
       <Carousel />
+      <div>
+        <TopArtist />
+      </div>
       <RecentPlayed />
     </SongContext.Provider>
   );
