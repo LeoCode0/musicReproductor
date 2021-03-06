@@ -1,6 +1,7 @@
-import { useEffect } from "react";
-import { FaPlay } from "react-icons/fa";
 import styles from "./Carousel.module.css";
+import { NoItems } from "../NoItems";
+import { FaPlay } from "react-icons/fa";
+import { useEffect } from "react";
 
 const CarouselItem = ({ cover, song, songName, album }) => {
   const handleClick = () => {
@@ -28,6 +29,7 @@ const CarouselItem = ({ cover, song, songName, album }) => {
 };
 
 export const Carousel = () => {
+  let data = [];
   const songs = [
     {
       cover: "https://picsum.photos/300",
@@ -78,9 +80,11 @@ export const Carousel = () => {
     <div>
       <h2 className={styles.title}>TEXTO PARA MOSTRAR</h2>
       <ul className={styles.list}>
-        {songs.map((song) => (
-          <CarouselItem {...song} />
-        ))}
+        {data.length === 0 ? (
+          <NoItems message="Aún no has agregado canciones a favoritos" />
+        ) : (
+          data.map((song) => <CarouselItem {...song} />)
+        )}
       </ul>
     </div>
   );
