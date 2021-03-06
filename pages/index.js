@@ -3,13 +3,14 @@ import {
   initialState as searchState,
 } from "../context/searchContext";
 import { RecentPlayed } from "../components/RecentPlayed/";
+import { Notification } from "../components/Promotion/";
 import { SongContext } from "../context/songContext";
 import { TopArtist } from "../components/TopArtist/";
 import { SearchBar } from "../components/SearchBar";
 import { Carousel } from "../components/carousel";
 import { initialState } from "../initialState";
+import { Player } from "../components/Player/";
 import { useEffect } from "react";
-import { Notification } from "../components/Promotion/";
 
 function home() {
   useEffect(() => {}, []);
@@ -25,6 +26,7 @@ function home() {
         <Notification />
       </div>
       <RecentPlayed />
+      <Player />
     </SongContext.Provider>
   );
 }
