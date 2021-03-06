@@ -10,7 +10,6 @@ html {
 
 body {
   font-family: "Roboto", sans-serif;
-  background: #e5e5e5;
 }
 
 img {
@@ -19,6 +18,48 @@ img {
   object-fit: contain;
 }
 
-.hidden {
+button {
+  transition: all 0.3s;
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.hidden,
+.desktop {
   display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .containerElements {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .containerElements {
+    display: none;
+  }
+
+  .desktop {
+    display: flex;
+    flex-wrap: wrap;
+    width: 30%;
+    height: max-content;
+    justify-content: center;
+  }
+
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .music {
+    width: 70%;
+  }
 }

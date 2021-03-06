@@ -45,3 +45,17 @@
   text-align: center;
   font-size: 1.8rem;
 }
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 40%;
+    min-width: 350px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 350px;
+    margin: 0 20px;
+  }
+}

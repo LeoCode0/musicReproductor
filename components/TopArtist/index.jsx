@@ -1,4 +1,5 @@
 import styles from "./TopArtist.module.css";
+import { FaStar } from "react-icons/fa";
 
 export const TopArtist = () => {
   let artists = [
@@ -31,7 +32,9 @@ export const TopArtist = () => {
     <section className={styles.container}>
       <div className={styles.artists__header}>
         <h2>Top artist</h2>
-        <span>icon</span>
+        <span>
+          <FaStar color={"#ffd500"} />
+        </span>
       </div>
       <ul className={styles.artists__list}>
         {artists.map((artist) => (

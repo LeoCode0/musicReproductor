@@ -30,7 +30,7 @@ const CarouselItem = ({ cover, song, songName, album }) => {
 
 export const Carousel = () => {
   let data = [];
-  const songs = [
+  const s = [
     {
       cover: "https://picsum.photos/300",
       song: "test",
@@ -77,7 +77,7 @@ export const Carousel = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
       <h2 className={styles.title}>TEXTO PARA MOSTRAR</h2>
       <ul className={styles.list}>
         {data.length === 0 ? (

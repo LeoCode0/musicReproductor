@@ -1,3 +1,4 @@
+import { MdNotifications } from "react-icons/md";
 import styles from "./Promotion.module.css";
 
 export const Notification = () => {
@@ -5,7 +6,9 @@ export const Notification = () => {
     <section className={styles.container}>
       <div className={styles.notification__header}>
         <h2>Notificaciones</h2>
-        <span>Icon</span>
+        <span>
+          <MdNotifications color="#808080" />
+        </span>
       </div>
       <div className={styles.notification__body}>
         <div className={styles.notification__item}>

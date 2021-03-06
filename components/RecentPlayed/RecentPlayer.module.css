@@ -80,3 +80,10 @@
 .song__play svg {
   color: orange;
 }
+
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 100%;
+    margin: 20px 0 70px;
+  }
+}
