@@ -1,59 +1,29 @@
-import { FaPlay } from "react-icons/fa";
 import styles from "./RecentPlayer.module.css";
+import { useEffect, useState } from "react";
+import { FaPlay } from "react-icons/fa";
 
-export const RecentPlayed = ({ recentPlayed }) => {
-  let data = [
-    {
-      cover: "https://picsum.photos/300",
-      song: "test",
-      songName: "test",
-      author: "test",
-      number: "1",
-    },
-    {
-      cover: "https://picsum.photos/300",
-      song: "test",
-      songName: "test",
-      author: "test",
-      number: "2",
-    },
-    {
-      cover: "https://picsum.photos/300",
-      song: "test",
-      songName: "test",
-      author: "test",
-      number: "3",
-    },
-    {
-      cover: "https://picsum.photos/300",
-      song: "test",
-      songName: "test",
-      author: "test",
-      number: "4",
-    },
-    {
-      cover: "https://picsum.photos/300",
-      song: "test",
-      songName: "test",
-      author: "test",
-      number: "5",
-    },
-  ];
-
-  console.log(data);
+export const RecentPlayed = () => {
+  const [songs, setsongs] = useState([]);
+  useEffect(() => {
+    fetch(
+      `http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${process.env.API_KEY}&limit=10&format=json`
+    )
+      .then((data) => data.json())
+      .then((json) => setsongs(json.tracks.track));
+  }, []);
   return (
     <section className={styles.container}>
-      <h2 className={styles.title}>Recientemente escuchadas</h2>
+      <h2 className={styles.title}>Top 10</h2>
       <ul className={styles.list}>
-        {data.map((item) => (
-          <RecentSong {...item} />
+        {songs.map((item, id) => (
+          <RecentSong data={item} number={id} key={id} />
         ))}
       </ul>
     </section>
   );
 };
 
-const RecentSong = ({ number, cover, songName, author, duration }) => {
+const RecentSong = ({ data, number }) => {
   const handleClick = () => {
     console.log("Reproducir musica");
   };
@@ -61,19 +31,23 @@ const RecentSong = ({ number, cover, songName, author, duration }) => {
     <li className={styles.list__song}>
       <div className={styles.song__description}>
         <span className={`${styles.song__number} ${styles.gray__text} `}>
-          {number}
+          {number + 1}
         </span>
-        <img className={styles.song__image} src={cover} alt="SongName" />
+        <img
+          className={styles.song__image}
+          src={data.image[1]["#text"]}
+          alt="SongName"
+        />
         <div>
-          <p className={styles.song__name}>{songName}</p>
+          <p className={styles.song__name}>{data.name}</p>
           <p className={`${styles.gray__text} ${styles.song__author}`}>
-            {author}
+            {data.artist.name}
           </p>
         </div>
       </div>
       <div className={styles.song__tools}>
         <span className={`${styles.song__duration} ${styles.gray__text}`}>
-          3:00
+          {data.listeners}
         </span>
         <button
           className={styles.song__play}

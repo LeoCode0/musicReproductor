@@ -1,89 +1,65 @@
+import { FavoritesContext } from "../../context/favoritesContext";
+import { SearchContext } from "../../context/searchContext";
+import { FaPlay, FaStar } from "react-icons/fa";
 import styles from "./Carousel.module.css";
 import { NoItems } from "../NoItems";
-import { FaPlay } from "react-icons/fa";
-import { useEffect } from "react";
+import { useContext } from "react";
 
-const CarouselItem = ({ cover, song, songName, album }) => {
+const CarouselItem = ({ name, artist, image, url }) => {
+  const { data, setData } = useContext(FavoritesContext);
+
   const handleClick = () => {
-    console.log(song);
+    let favoriteSong = { name, artist, image, url };
+    const myData = data.splice();
+    myData.push(favoriteSong);
+    setData([...data, favoriteSong]);
   };
 
   return (
     <li className={styles.list__item}>
       <div className={styles.item__image}>
-        <img src={cover} alt={songName} />
+        <img src={image[1]["#text"]} alt={name} />
+        <button type="button" className={styles.item__button}>
+          <a href={url} rel="noopener noreferrer" target="__blank">
+            <FaPlay />
+          </a>
+        </button>
         <button
-          type="button"
+          className={`${styles.item__star} ${styles.item__button}`}
           onClick={handleClick}
-          className={styles.item__button}
         >
-          <FaPlay />
+          <FaStar />
         </button>
       </div>
       <div className={styles.item__description}>
-        <p className={styles.song_name}>{songName}</p>
-        <p className={styles.song_artist}>{album}</p>
+        <p className={styles.song_name}>{name} </p>{" "}
+        <p className={styles.song_artist}>{artist}</p>
       </div>
     </li>
   );
 };
 
-export const Carousel = () => {
-  let data = [];
-  const s = [
-    {
-      cover: "https://picsum.photos/300",
-      song: "test",
-      songName: "test",
-      album: "test",
-      key: "1",
-    },
-    {
-      cover: "https://picsum.photos/300",
-      song: "test",
-      songName: "test",
-      album: "test",
-      key: "1",
-    },
-    {
-      cover: "https://picsum.photos/300",
-      song: "test",
-      songName: "test",
-      album: "test",
-      key: "1",
-    },
-    {
-      cover: "https://picsum.photos/300",
-      song: "test",
-      songName: "test",
-      album: "test",
-      key: "1",
-    },
-    {
-      cover: "https://picsum.photos/300",
-      song: "test",
-      songName: "test",
-      album: "test",
-      key: "1",
-    },
-  ];
-
-  useEffect(() => {
-    fetch(
-      `https://ws.audioscrobbler.com/2.0/?method=track.getsimilar&artist=paulo_londra&api_key=${process.env.API_KEY}&format=json`
-    )
-      .then((data) => data.json())
-      .then((json) => console.log(json));
-  }, []);
-
+export const Carousel = ({ context, defaultText, errorText }) => {
+  let dataSearch = useContext(SearchContext);
+  let dataFavorites = useContext(FavoritesContext);
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>TEXTO PARA MOSTRAR</h2>
+      <h2 className={styles.title}>{defaultText}</h2>
       <ul className={styles.list}>
-        {data.length === 0 ? (
-          <NoItems message="Aún no has agregado canciones a favoritos" />
+        {context === "search" ? (
+          dataSearch.data.length === 0 ? (
+            <NoItems message={errorText} />
+          ) : (
+            dataSearch.data.map((item) => (
+              <CarouselItem {...item} key={item.name} />
+            ))
+          )
+        ) : dataFavorites.data.length === 0 ? (
+          <NoItems message={errorText} />
         ) : (
-          data.map((song) => <CarouselItem {...song} />)
+          dataFavorites.data.map((item) => (
+            <CarouselItem {...item} key={item.name} />
+          ))
         )}
       </ul>
     </div>

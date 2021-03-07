@@ -1,33 +1,17 @@
+import { useState, useEffect } from "react";
 import styles from "./TopArtist.module.css";
 import { FaStar } from "react-icons/fa";
 
 export const TopArtist = () => {
-  let artists = [
-    {
-      cover: "https://picsum.photos/400",
-      artist: "lorem 2ipsums",
-    },
-    {
-      cover: "https://picsum.photos/400",
-      artist: "lorem ipsums",
-    },
-    {
-      cover: "https://picsum.photos/400",
-      artist: "lorem 2ipsums",
-    },
-    {
-      cover: "https://picsum.photos/400",
-      artist: "lorem 2ipsums",
-    },
-    {
-      cover: "https://picsum.photos/400",
-      artist: "lorem 2ipsums",
-    },
-    {
-      cover: "https://picsum.photos/400",
-      artist: "lorem 2ipsums",
-    },
-  ];
+  const [state, setstate] = useState([]);
+  useEffect(() => {
+    fetch(
+      `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${process.env.API_KEY}&limit=6&format=json`
+    )
+      .then((data) => data.json())
+      .then((json) => setstate(json.artists.artist));
+  }, []);
+
   return (
     <section className={styles.container}>
       <div className={styles.artists__header}>
@@ -37,17 +21,24 @@ export const TopArtist = () => {
         </span>
       </div>
       <ul className={styles.artists__list}>
-        {artists.map((artist) => (
-          <Artist {...artist} />
+        {state.map((artist) => (
+          <Artist artist={artist} key={artist.id} />
         ))}
       </ul>
     </section>
   );
 };
 
-const Artist = ({ cover, artist }) => (
-  <li className={styles.artist}>
-    <img className={styles.artist__image} src={cover} alt={artist} />
-    <p className={styles.artist__name}>{artist}</p>
-  </li>
-);
+const Artist = (artist) => {
+  const data = artist.artist;
+  return (
+    <li className={styles.artist}>
+      <img
+        className={styles.artist__image}
+        src={data.image[0]["#text"]}
+        alt={data.name}
+      />
+      <p className={styles.artist__name}>{data.name}</p>
+    </li>
+  );
+};

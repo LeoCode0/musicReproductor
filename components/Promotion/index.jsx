@@ -1,4 +1,5 @@
-import { MdNotifications } from "react-icons/md";
+import { MdNotifications, MdComputer } from "react-icons/md";
+import { FaTwitter } from "react-icons/fa";
 import styles from "./Promotion.module.css";
 
 export const Notification = () => {
@@ -12,11 +13,9 @@ export const Notification = () => {
       </div>
       <div className={styles.notification__body}>
         <div className={styles.notification__item}>
-          <img
-            className={styles.notification__image}
-            src="https://picsum.photos/300"
-            alt="Twitter"
-          />
+          <span className={styles.twitter}>
+            <FaTwitter />
+          </span>
           <div className="text__container">
             <p className={styles.notification__text}>Visita mi twitter</p>
             <a
@@ -30,11 +29,9 @@ export const Notification = () => {
           </div>
         </div>
         <div className={styles.notification__item}>
-          <img
-            src="https://picsum.photos/300"
-            className={styles.notification__image}
-            alt="More projects"
-          />
+          <span className={styles.computer}>
+            <MdComputer />
+          </span>
           <div className="text__container">
             <p className={styles.notification__text}>
               Mira mis otros proyectos

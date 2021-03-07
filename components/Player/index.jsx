@@ -1,5 +1,6 @@
-import styles from "./Player.module.css";
 import { FaPlay, FaPause } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import styles from "./Player.module.css";
 
 const playTrack = (song) => {
   song.play();
@@ -23,16 +24,29 @@ const handleClick = (e) => {
 };
 
 export const Player = () => {
+  const [song, setSong] = useState({
+    name: "Smells",
+    image: [{ "#text": "./" }, { "#text": "./" }],
+    artist: { name: "undefined" },
+  });
+  useEffect(() => {
+    fetch(
+      `http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=rock&api_key=${process.env.API_KEY}&limit=1&format=json`
+    )
+      .then((data) => data.json())
+      .then((json) => setSong(json.tracks.track[0]));
+  }, []);
+
   return (
     <div className={`${styles.player} ${styles.mobile}`}>
       <img
         className={styles.player__image}
-        src="https://picsum.photos/300"
-        alt=""
+        src={song.image[1]["#text"]}
+        alt={song.name}
       />
       <div className={styles.player__details}>
-        <p className={styles.player__song}>Cancion</p>
-        <p className={styles.player__artist}>Artista</p>
+        <p className={styles.player__song}>{song.name}</p>
+        <p className={styles.player__artist}>{song.artist.name}</p>
       </div>
       <button
         className={styles.player__button}
@@ -47,17 +61,29 @@ export const Player = () => {
 };
 
 export const Desk = () => {
+  const [song, setSong] = useState({
+    name: "Smells",
+    image: [{ "#text": "./" }, { "#text": "./" }],
+    artist: { name: "undefined" },
+  });
+  useEffect(() => {
+    fetch(
+      `http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=pop&api_key=${process.env.API_KEY}&limit=1&format=json`
+    )
+      .then((data) => data.json())
+      .then((json) => setSong(json.tracks.track[0]));
+  }, []);
   return (
     <div className={styles.player}>
       <p className={styles.white}>Reproduciendo</p>
       <img
         className={styles.player__image}
-        src="https://picsum.photos/300"
-        alt=""
+        src={song.image[1]["#text"]}
+        alt={song.name}
       />
       <div className={styles.player__details}>
-        <p className={styles.player__song}>Cancion</p>
-        <p className={styles.player__artist}>Artista</p>
+        <p className={styles.player__song}>{song.name}</p>
+        <p className={styles.player__artist}>{song.artist.name}</p>
       </div>
       <button
         className={styles.player__button}

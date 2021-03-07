@@ -11,6 +11,7 @@
 .list {
   display: flex;
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .list__item {
@@ -48,6 +49,11 @@
   bottom: 25px;
   right: 20px;
   cursor: pointer;
+}
+
+.item__star {
+  position: absolute;
+  bottom: 70px;
 }
 
 .item__button svg {

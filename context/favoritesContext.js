@@ -1,11 +1,11 @@
 import { createContext, useState } from "react";
 
-const initialState = () => {
-  const [favorites, setFavorites] = useState([]);
+export const initialState = () => {
+  const [data, setData] = useState([]);
 
   return {
-    setFavorites,
-    favorites,
+    setData,
+    data,
   };
 };
 

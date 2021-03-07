@@ -1,12 +1,12 @@
-import { useState, createContext } from "react";
+import { createContext, useState } from "react";
 
 export const initialState = () => {
-  const [search, setSearch] = useState([]);
+  const [data, setData] = useState([]);
 
   return {
-    search,
-    setSearch,
+    data,
+    setData,
   };
 };
 
-export const SearchContext = createContext({});
+export const SearchContext = createContext(null);
