@@ -6,7 +6,7 @@ export const TopArtist = () => {
   const [state, setstate] = useState([]);
   useEffect(() => {
     fetch(
-      `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${process.env.API_KEY}&limit=6&format=json`
+      `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=6965faf2bd1c9d882e72bc0aef536612&limit=6&format=json`
     )
       .then((data) => data.json())
       .then((json) => setstate(json.artists.artist));

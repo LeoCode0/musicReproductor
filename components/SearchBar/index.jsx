@@ -11,7 +11,7 @@ export const SearchBar = () => {
     let data = new FormData(e.target);
     let value = data.get("search");
     fetch(
-      `${baseApi}/2.0/?method=track.search&track=${value}&api_key=${process.env.API_KEY}&format=json`
+      `${baseApi}/2.0/?method=track.search&track=${value}&api_key=6965faf2bd1c9d882e72bc0aef536612&format=json`
     )
       .then((data) => data.json())
       .then((json) => setData(json.results.trackmatches.track));
