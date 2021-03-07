@@ -6,7 +6,7 @@ export const RecentPlayed = () => {
   const [songs, setsongs] = useState([]);
   useEffect(() => {
     fetch(
-      `http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=6965faf2bd1c9d882e72bc0aef536612&limit=10&format=json`
+      `https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=6965faf2bd1c9d882e72bc0aef536612&limit=10&format=json`
     )
       .then((data) => data.json())
       .then((json) => setsongs(json.tracks.track));

@@ -5,7 +5,7 @@ import { SearchContext } from "../../context/searchContext";
 
 export const SearchBar = () => {
   const { setData } = useContext(SearchContext);
-  const baseApi = "http://ws.audioscrobbler.com";
+  const baseApi = "https://ws.audioscrobbler.com";
   const handleSubmit = (e) => {
     e.preventDefault();
     let data = new FormData(e.target);
