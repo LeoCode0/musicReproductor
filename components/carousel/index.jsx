@@ -1,7 +1,7 @@
 import { FavoritesContext } from "../../context/favoritesContext";
 import { SearchContext } from "../../context/searchContext";
 import { FaPlay, FaStar } from "react-icons/fa";
-import styles from "./Carousel.module.css";
+import styles from "./carousel.module.css";
 import { NoItems } from "../NoItems";
 import { useContext } from "react";
 
